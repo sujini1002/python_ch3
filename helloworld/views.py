@@ -24,6 +24,7 @@ def hello3(request):
 
 def counter_max(request):
     value = Counter.objects.aggregate(max_groupno=Max('groupno'))
+    print(f'counter_max : {value}')
     max_groupno = 0 if value["max_groupno"] is None else value["max_groupno"]
     return HttpResponse(f'max groupno:{max_groupno}')
 
